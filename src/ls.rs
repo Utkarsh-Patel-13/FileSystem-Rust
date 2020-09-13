@@ -1,10 +1,11 @@
 use std::fs;
 use std::path;
 
+// TODO: ls to inner directories, i.e ls d1/d2/d3
 pub fn ls(pwd: &String) {
 
     let p = path::Path::new(pwd);
-    let entries: Vec<_> = fs::read_dir(p).unwrap().collect();
+    let entries: Vec<_> = fs::read_dir(p).unwrap().collect();   // Vector of DirEntry's 
 
     for entry in entries {
 
@@ -15,10 +16,10 @@ pub fn ls(pwd: &String) {
 
                     if let Ok(metadata) = f.metadata() {
                         if metadata.is_file() {
-                            println!("{}", file_name)
+                            println!("> {}", file_name)
                         }
                         else if metadata.is_dir() {
-                            println!("{}/", file_name)
+                            println!("> {}/", file_name)
                         }
                     }
                 }

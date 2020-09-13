@@ -1,11 +1,15 @@
 use std::io;
-use std::io::{stdout,Write};
+use std::io::{stdout, Write};
 use std::fs::create_dir_all;
 
 mod mkdir;
 mod ls;
+mod cd;
 
 fn get_input() -> String {
+    /*
+        Function to get input and return String after trimming the input
+    */
 
     let _ = stdout().flush();
 
@@ -22,8 +26,8 @@ fn get_input() -> String {
     input
 }
 
-fn main() {
 
+fn main() {
 
     println!("Welcome  to FS!!\n");
 
@@ -32,9 +36,9 @@ fn main() {
         Err(e)  => println!("Error: {}", e)
     }
    
-    let mut pwd = String::from("./fs");
+    // ./fs is the root directory
+    let mut pwd = String::from("./fs");         // pwd - present working directory.
 
-    
     let _ = stdout().flush();
 
     loop {
@@ -51,11 +55,13 @@ fn main() {
 
             "ls"        => ls::ls(&pwd),
 
+            "cd"        => cd::cd(&mut pwd, input_arr),
+
             "exit"      => break,
 
-            " " | "\n"  => continue, 
+            "" | "\n"  => continue, 
 
-            _           => println!("=> Command {} not found.", input)
+            _           => println!("> Command {} not found.", input)
 
         }
     }
