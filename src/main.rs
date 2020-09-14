@@ -29,7 +29,7 @@ fn get_input() -> String {
 
 fn main() {
 
-    println!("Welcome  to FS!!\n");
+    println!("Welcome to FS!!\n");
 
     match create_dir_all("./fs") {
         Ok(_)   => {},

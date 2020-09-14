@@ -18,6 +18,6 @@ A basic implementation of file system and terminal commands in Rust.
 6. cat
 
 
-# Extra stuff
+### Extra stuff
 1. Output text colorization.
 2. vim support
